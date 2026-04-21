@@ -32,30 +32,62 @@ ClapTrap::~ClapTrap()
     std::cout << "Destructor called" << std::endl;
 }
 
-ClapTrap&   operator=(const ClapTrap& other)
+ClapTrap&   ClapTrap::operator=(const ClapTrap& other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
     {
-		this->_name = name;
-		this->_hitPoints = 10;
-		this->_energyPoints = 10;
-		this->_attackDamage = 0;
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackDamage = other._attackDamage;
     }
 	return (*this);
 }
 
-void	attack(const std::string& target)
+void	ClapTrap::attack(const std::string& target)
 {
-	
+	if (!this->_hitPoints)
+    {
+        std::cout << "ClapTrap " << this->_name << " can't attack, because it has no hit points left." << std::endl;
+        return ;
+    }
+    if (!this->_energyPoints)
+    {
+        std::cout << "ClapTrap " << this->_name << " can't attack, because it has no energy points left." << std::endl;
+        return ;
+    }
+    this->_energyPoints--;
+    std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 }
 
-void	takeDamage(unsigned int amount)
+void	ClapTrap::takeDamage(unsigned int amount)
 {
-
+    if (!this->_hitPoints)
+    {
+        std::cout << "ClapTrap " << this->_name << " is already destroyed. (hit points 0)" << std::endl;
+        return ;
+    }
+    if (this->_hitPoints <= amount)
+        this->_hitPoints = 0;
+    else
+        this->_hitPoints -= amount;
+    std::cout << "ClapTrap " << this->_name << " takes " << amount << " points of damage!" << std::endl;
 }
 
-void	beRepaired(unsigned int amount)
+void	ClapTrap::beRepaired(unsigned int amount)
 {
-
+    if (!this->_hitPoints)
+    {
+        std::cout << "ClapTrap " << this->_name << " can't repair itself because it has no hit points left." << std::endl;
+        return ;
+    }
+    if (!this->_energyPoints)
+    {
+        std::cout << "ClapTrap " << this->_name << " can't repair itself because it has no energy points left." << std::endl;
+        return ;
+    }
+    this->_hitPoints += amount;
+    this->_energyPoints--;
+    std::cout << "ClapTrap " << this->_name << " repairs itself and gains " << amount << " hit points!" << std::endl;
 }

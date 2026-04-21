@@ -1,13 +1,16 @@
 #ifndef CLAPTRAP_HPP
 # define    CLAPTRAP_HPP
 
+# include <iostream>
+# include <string>
+
 class   ClapTrap
 {
     private:
         std::string _name;
-        int         _hitPoints;
-        int         _energyPoints;
-        int         _attackDamage;
+        unsigned int    _hitPoints;
+        unsigned int    _energyPoints;
+        unsigned int    _attackDamage;
     public:
         ClapTrap();
         ClapTrap(const std::string name);
