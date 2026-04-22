@@ -91,3 +91,14 @@ void	ClapTrap::beRepaired(unsigned int amount)
     this->_energyPoints--;
     std::cout << "ClapTrap " << this->_name << " repairs itself and gains " << amount << " hit points!" << std::endl;
 }
+
+// test
+unsigned int    ClapTrap::getHitPoints()
+{
+    return (this->_hitPoints);
+}
+
+unsigned int    ClapTrap::getEnergyPoints()
+{
+    return (this->_energyPoints);
+}

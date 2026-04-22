@@ -2,11 +2,18 @@
 
 int main(void)
 {
-  ClapTrap a("Woojette");
+	ClapTrap a("Test");
 
-  for (int i = 0; i < 11; i++)
-		a.attack("Clement");
+	std::cout << "Energy points: " << a.getEnergyPoints() << " | Hit points: " << a.getHitPoints() << std::endl;
+	std::cout << "##### attack #####" << std::endl;
+	for (unsigned int i = 0; i < 9; i++)
+	{
+		std::cout << i << ": ";
+		a.attack("Enemy");
+		std::cout << "Energy points: " << a.getEnergyPoints() << " | Hit points: " << a.getHitPoints() << std::endl;
+	}
 	a.beRepaired(1);
+	std::cout << "Energy points: " << a.getEnergyPoints() << " | Hit points: " << a.getHitPoints() << std::endl;
 
 	return (0);
 }
