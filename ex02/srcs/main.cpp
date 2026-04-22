@@ -19,7 +19,7 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << "###### copy constructor FragTrap ######" << std::endl;
-	FragTrap c("Woojette");
+	FragTrap c(b);
   c.attack("Clement3");
 	c.takeDamage(7);
 	c.beRepaired(5);
@@ -27,7 +27,8 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << "###### copy assignment FragTrap ######" << std::endl;
-	FragTrap d("Woojette");
+	FragTrap d;
+	d = b;
   d.attack("Clement4");
 	d.takeDamage(7);
 	d.beRepaired(5);
